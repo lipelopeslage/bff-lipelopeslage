@@ -1,13 +1,14 @@
+const dotenv = require('dotenv')
 const http = require('http')
+const app = require('express')()
 const port = process.env.PORT || 8080
-try {
-  http
-    .createServer(function (req, res) {
-      res.writeHead(200, { 'Content-Type': 'text/plain' })
-      res.end('Hello World!')
-    })
-    .listen(port)
+dotenv.config()
+
+app.get('/', (req, res) => {
+  res.end('Hello World from Express!')
+})
+
+app.listen(port, () => {
   console.log(`Listening to port ${port}...`)
-} catch (e) {
-  console.error(e)
-}
+  console.log(process.env.ALGORITHMIA_CLIENT_KEY)
+})
