@@ -2,8 +2,9 @@
   "name": "bff-lipelopeslage",
   "version": "0.0.0",
   "description": "A backend friend for a frontend =)",
-  "main": "node index.js",
+  "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
