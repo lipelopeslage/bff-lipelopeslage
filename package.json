@@ -1,0 +1,29 @@
+{
+  "name": "bff-lipelopeslage",
+  "version": "0.0.0",
+  "description": "A backend friend for a frontend =)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lipelopeslage/bff-lipelopeslage.git"
+  },
+  "keywords": [
+    "backend",
+    "node",
+    "frontend",
+    "algorithmia",
+    "google",
+    "googleapi",
+    "watson"
+  ],
+  "author": "Felipe Lopes Lage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lipelopeslage/bff-lipelopeslage/issues"
+  },
+  "homepage": "https://github.com/lipelopeslage/bff-lipelopeslage#readme"
+}
