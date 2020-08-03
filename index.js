@@ -2,7 +2,7 @@ const dotenv = require('dotenv')
 const app = require('express')()
 const bodyParser = require('body-parser')
 const fetchAlgo = require('./src/algorithmia')
-
+require('./src/watson')
 
 const port = process.env.PORT || 8080
 dotenv.config()
