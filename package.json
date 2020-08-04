@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "sh -ac '. .env; nodemon index.js'",
+    "start:prod": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
