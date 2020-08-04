@@ -9,23 +9,23 @@ const nlu = new NaturalLanguageUnderstandingV1({
   url: process.env.WATSON_NLU_URL
 })
 
-nlu.analyze(
-  {
-    text: 'Are you still working? We have to clean the house and eat breakfest!',
-    features: {
-      emotion: {
-        document: true
+const analyze = (params) => {
+  return new Promise((resolve, reject) => {
+    nlu.analyze(
+      {
+        ...params,
+      },
+      (error, response) => {
+        if (error) {
+          reject(error)
+        }
+        resolve(response)
       }
-    }
-  },
-  (error, response) => {
-    if (error) {
-      throw error
-    }
+    )
+  })
+}
 
-    console.log(response.result.emotion)
-  }
-)
+module.exports = { analyze }
 /*
 REF: https://cloud.ibm.com/apidocs/natural-language-understanding?code=node
 */
