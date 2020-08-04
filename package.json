@@ -4,7 +4,7 @@
   "description": "A backend friend for a frontend =)",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "sh -ac '. .env; nodemon index.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +25,14 @@
   "bugs": {
     "url": "https://github.com/lipelopeslage/bff-lipelopeslage/issues"
   },
-  "homepage": "https://github.com/lipelopeslage/bff-lipelopeslage#readme"
+  "homepage": "https://github.com/lipelopeslage/bff-lipelopeslage#readme",
+  "dependencies": {
+    "algorithmia": "^0.3.10",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "googleapis": "^58.0.0",
+    "ibm-watson": "^5.6.1",
+    "nodemon": "^2.0.4"
+  }
 }
