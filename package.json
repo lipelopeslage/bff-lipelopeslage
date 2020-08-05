@@ -4,10 +4,11 @@
   "description": "A backend friend for a frontend =)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon index.js",  
     "start:local": "sh -ac '. .env; nodemon index.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "workspaces": ["src"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lipelopeslage/bff-lipelopeslage.git"
