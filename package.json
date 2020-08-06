@@ -4,11 +4,13 @@
   "description": "A backend friend for a frontend =)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",  
-    "start:local": "sh -ac '. .env; nodemon index.js'",
+    "start": "nodemon --exec babel-node index.js",
+    "start:local": "sh -ac '. .env; nodemon --exec babel-node index.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "workspaces": ["src"],
+  "workspaces": [
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lipelopeslage/bff-lipelopeslage.git"
@@ -36,5 +38,11 @@
     "googleapis": "^58.0.0",
     "ibm-watson": "^5.6.1",
     "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.0"
   }
 }

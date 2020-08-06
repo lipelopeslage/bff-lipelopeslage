@@ -1,8 +1,8 @@
 const { analyze } = require('./../../services/watson')
 const { search } = require('./../../services/google')
-const { orderEmotionsDesc, objectToList, formatList, getAvarage, watsonFeatures } = require('./utils')
+const { orderEmotionsDesc, objectToList, formatList, getEmotionsAvarage, getSentimentAvarage, watsonFeatures } = require('./utils')
 
-const fetchEmotionalResults = async ({ query, total = 3 }) => {
+const fetchEmotionalResults = async ({ query, total = 8 }) => {
   const {
     data: { items }
   } = await search({ query, total })
@@ -11,22 +11,34 @@ const fetchEmotionalResults = async ({ query, total = 3 }) => {
     async ({ link }) =>
       await analyze({
         ...{ url: link },
-        ...{ features: watsonFeatures }
+        ...{ features: watsonFeatures, language: 'pt' }
       })
   )
   const results = await Promise.all(analysis)
+  console.log(results[0])
   const list = results.map(({ result }, index) => ({
     title: content[index].title,
     url: content[index].link,
-    emotions: result.emotion.document.emotion
+    emotions: result?.emotion?.document?.emotion,
+    sentiment: result?.sentiment?.document,
+    warnings: result.warnings
   }))
-  const emotionList = list.map(({emotions}) => emotions)
-  const newList = objectToList(getAvarage(emotionList))
-  const orderedList = orderEmotionsDesc(newList)
-  const formattedList = formatList(orderedList)
+  const emotionList = list.map(({ emotions }) => emotions)
+  const avarageEmotionList = objectToList(getEmotionsAvarage(emotionList))
+  const orderedEmotionList = orderEmotionsDesc(avarageEmotionList)
+  const formattedEmotionList = formatList(orderedEmotionList)
 
+  const sentimentList = list.map(({ sentiment }) => sentiment)
+  const { score: avarageSentiment } = getSentimentAvarage(sentimentList)
+  
   return {
-    avarage: formattedList,
+    avarage: {
+      emotions: formattedEmotionList,
+      sentiment: {
+        score: avarageSentiment,
+        label: avarageSentiment > 0 ? 'positive' : 'negative'
+      }
+    },
     details: list
   }
 }
