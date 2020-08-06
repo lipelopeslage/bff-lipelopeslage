@@ -15,20 +15,20 @@ const fetchEmotionalResults = async ({ query, total = 8 }) => {
       })
   )
   const results = await Promise.all(analysis)
-  console.log(results[0])
-  const list = results.map(({ result }, index) => ({
+  const formattedList = results.map(({ result }, index) => ({
     title: content[index].title,
     url: content[index].link,
     emotions: result?.emotion?.document?.emotion,
     sentiment: result?.sentiment?.document,
     warnings: result.warnings
   }))
-  const emotionList = list.map(({ emotions }) => emotions)
+
+  const emotionList = formattedList.map(({ emotions }) => emotions)
   const avarageEmotionList = objectToList(getEmotionsAvarage(emotionList))
   const orderedEmotionList = orderEmotionsDesc(avarageEmotionList)
   const formattedEmotionList = formatList(orderedEmotionList)
 
-  const sentimentList = list.map(({ sentiment }) => sentiment)
+  const sentimentList = formattedList.map(({ sentiment }) => sentiment)
   const { score: avarageSentiment } = getSentimentAvarage(sentimentList)
   
   return {
@@ -39,7 +39,7 @@ const fetchEmotionalResults = async ({ query, total = 8 }) => {
         label: avarageSentiment > 0 ? 'positive' : 'negative'
       }
     },
-    details: list
+    details: formattedList
   }
 }
 
