@@ -6,7 +6,8 @@ const search = async ({ query, total = 2 }) => {
     auth: process.env.GOOGLE_API_KEY,
     cx: process.env.GOOGLE_SEARCH_ENGINE_ID,
     q: query,
-    num: total
+    num: total,
+    sort: 'date'
   })
   return response
 }

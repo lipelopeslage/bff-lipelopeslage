@@ -8,7 +8,7 @@ const formatList = (list) =>
     return acc
   }, {})
 
-const getAvarage = (lists) => {
+const getEmotionsAvarage = (lists) => {
   const total = lists.length
   return lists.reduce((acc, list) => {
     for (let key in list) {
@@ -18,10 +18,21 @@ const getAvarage = (lists) => {
   }, {})
 }
 
+const getSentimentAvarage = (lists) => {
+  const total = lists.length
+  return lists.reduce((acc, list) => {
+    acc.score = (acc.score || 0) + list.score / total
+    return acc
+  }, {})
+}
+
 const watsonFeatures = {
   emotion: {
     document: true
+  },
+  sentiment: {
+    documentt: true
   }
 }
 
-module.exports = { orderEmotionsDesc, objectToList, formatList, getAvarage, watsonFeatures }
+module.exports = { orderEmotionsDesc, objectToList, formatList, getEmotionsAvarage, getSentimentAvarage, watsonFeatures }
