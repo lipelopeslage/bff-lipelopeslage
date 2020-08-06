@@ -4,7 +4,7 @@
   "description": "A backend friend for a frontend =)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "start:local": "sh -ac '. .env; nodemon --exec babel-node index.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
