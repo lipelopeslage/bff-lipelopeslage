@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
     "start:local": "sh -ac '. .env; nodemon --exec babel-node index.js'",
-    "test": "echo \"Warning: no test specified\"
+    "test": "echo \"Warning: no test specified\""
   },
   "workspaces": [
     "src"
